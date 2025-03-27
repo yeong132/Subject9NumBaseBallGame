@@ -53,7 +53,7 @@ void AYMGameMode::Server_HandleClientGuess_Implementation(APlayerController* Pla
 	// 1. 현재 컨트롤러의 플레이어 스테이트 설정
 	// 2. 상대방 플레이어 스테이트 설정
 	// 3. 게임스테이트에서 멀티캐스트 할 것이기 때문에 변수 정의
-	// 4. 입력을 받아서 정답을 맞출 기회가 0이 되버린 플레이어만 UI가 비활성화 되게 하기 위해 PC 변수 정의
+	// 4. 입력을 받아서 정답을 맞출 기회가 0이 되버린 플레이어만 UI가 비활성화 되게 하기 위해 변수 정의
 	AYMPlayerState* CurrentPlayerState = PlayerController->GetPlayerState<AYMPlayerState>();
 	AYMPlayerState* OpponentPlayerState = FindOpponentPlayerState(CurrentPlayerState);
 	AYMGameState* YMGameState = Cast<AYMGameState>(GetWorld()->GetGameState());
@@ -212,6 +212,7 @@ void AYMGameMode::DecreaseAttemptsForPlayer(APlayerController* PC)
 	CurrentPlayerState->DecreaseAttempts();
 }
 
+// 이 부분 함수명 살짝 아쉬운데 뭘로 해야 됐을까요..
 void AYMGameMode::EndGameWithMessage(const FString& message)
 {
 	AYMGameState* YMGameState = Cast<AYMGameState>(GetWorld()->GetGameState());
